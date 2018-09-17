@@ -1,0 +1,13 @@
+atoi()   //字符串的数字转换成整数数值
+stable_sort() //归并排序
+freopen("1.txt", "r", stdin);
+freopen("2.txt", "w", stdout);
+struct cmp2
+{
+    bool operator ()(int x, int y)
+    {
+        return x < y;
+    }
+};
+priority_queue<int>q1;//从小到大
+priority_queue<int, vector<int>, cmp2>q2;//从大到小
