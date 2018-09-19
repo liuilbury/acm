@@ -14,7 +14,7 @@
     "C_Cpp.autocomplete": "Default", // 因为有clang的补全，所以关掉
     "code-runner.executorMap": {
         "c": "cd $dir && clang $fileName -o $fileNameWithoutExt.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c11 && $dir$fileNameWithoutExt",
-        "cpp": "cd $dir && clang++ $fileName -o e:/c++acm/workexe/main.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c++17 && e:/c++acm/workexe/main.exe"
+        "cpp": "cd $dir && clang++ $fileName -o c:/acm/workexe/main.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c++17 && c:/acm/workexe/main.exe"
     }, // 设置code runner的命令行
     "editor.fontFamily": "Consolas", // 控制编辑器字体
 "workbench.colorTheme": "One Dark Pro", // 主题

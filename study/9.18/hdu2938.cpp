@@ -1,8 +1,9 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#include<algorithm>
 using namespace std;
 #define LL long long
 const int maxn = 1e5 + 5;
-int i, i0, n, k, r, mp[100005], tmp,to[100005],cnt[100005],pre[100005],ans[100005],f;
+int i, i0, n, k, r, mp[100005], tmp, to[100005], cnt[100005], pre[100005], ans[100005], f;
 bool vis[100005];
 struct node
 {
@@ -16,11 +17,11 @@ int fin(int x)
     f = 1;
     while (1)
     {
-        pre[now]=v.size();
+        pre[now] = v.size();
         if (vis[now])
             return v1;
         tmp++;
-        cnt[now]=tmp;
+        cnt[now] = tmp;
         vis[now] = 1;
         now = mp[now];
         v1 += f;
@@ -65,38 +66,43 @@ int main()
             scanf("%d", &mp[i]);
         }
         memset(vis, 0, sizeof(vis));
-        memset(ans,-1,sizeof(ans));
-        bool ff=1;
+        memset(ans, -1, sizeof(ans));
+        bool ff = 1;
         for (i = 1; i <= n; i++)
         {
-            scanf("%d",&to[i]);
-            if(vis[i]==0)
+            scanf("%d", &to[i]);
+            if (vis[i] == 0)
             {
                 r = fin(i);
-                if(f)ff=0;
+                if (f)
+                    ff = 0;
                 v.push_back({r, tmp});
             }
         }
-        for(i=1;i<=n;i++)
+        for (i = 1; i <= n; i++)
         {
             int tmp;
-            if(cnt[to[i]]<cnt[i])
+            if (cnt[to[i]] < cnt[i])
             {
-                tmp=v[pre[i]].div-cnt[i]+cnt[to[i]];
+                tmp = v[pre[i]].div - cnt[i] + cnt[to[i]];
             }
             else
             {
-                tmp=cnt[to[i]]-cnt[i];
+                tmp = cnt[to[i]] - cnt[i];
             }
             //printf("%d %d %d---\n",i,to[i],tmp);
-            if(ans[pre[i]]==-1)ans[pre[i]]=tmp;
+            if (ans[pre[i]] == -1)
+                ans[pre[i]] = tmp;
             else
             {
-                if(ans[pre[i]]!=tmp)ff=0;
+                if (ans[pre[i]] != tmp)
+                    ff = 0;
             }
         }
-        if(ff)printf("%lld\n", work());
-        else printf("-1\n");
+        if (ff)
+            printf("%lld\n", work());
+        else
+            printf("-1\n");
     }
     return 0;
 }
