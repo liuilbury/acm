@@ -1,15 +1,62 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-#define fi first
-#define se second
-#define mem(a, b) memset(a, b, sizeof(a))
-#define INF 0X3f3f3f3f
-const ll MAXN = 5000 + 7;
-const ll MOD = 1e9 + 7;
-//-------------------------------------------//
 int main()
 {
-    printf("3\n");
-    system("pause");
+    //freopen("3.in", "r", stdin);
+    //freopen("3.out", "w", stdout);
+    int n, m;
+    while (scanf("%d %d", &n, &m) != EOF)
+    {
+        int cnt = 0;
+        if (n == 1 || m == 1)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    printf("%d ", ++cnt);
+                }
+                printf("\n");
+            }
+            continue;
+        }
+        if (n % 2 == 1 && m % 2 == 1)
+        {
+            printf("-1\n");
+            continue;
+        }
+        if (n % 2 == 0)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    printf("%d ", ++cnt);
+                }
+                printf("\n");
+            }
+            continue;
+        }
+        else
+        {
+            int cnt1 = 0;
+            int cnt2 = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    if (j % 2 == 1)
+                    {
+                        printf("%d ", cnt1++ * 2 + 1);
+                    }
+                    else
+                    {
+                        printf("%d ", ++cnt2 * 2);
+                    }
+                }
+                printf("\n");
+            }
+        }
+        continue;
+    }
 }

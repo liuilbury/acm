@@ -1,48 +1,28 @@
-#include <algorithm>
-#include <bits/stdc++.h>
-#include <climits>
-#include <cstdio>
-#include <cstring>
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-#define LL long long
-const int maxn = 1e5 + 5;
-int n;
-LL exgcd(LL a, LL b, LL &x, LL &y)
-{
-    if (!b)
-    {
-        x = 1, y = 0;
-        return a;
-    }
-    LL re = exgcd(b, a % b, x, y), tmp = x;
-    x = y, y = tmp - (a / b) * y;
-    return re;
-}
-LL m[maxn], a[maxn];
-LL work()
-{
-    LL M = m[1], A = a[1], t, d, x, y;
-    int i;
-    for (i = 2; i <= n; i++)
-    {
-        d = exgcd(M, m[i], x, y); //解方程
-        if ((a[i] - A) % d)
-            return -1;                                          //无解
-        x *= (a[i] - A) / d, t = m[i] / d, x = (x % t + t) % t; //求x
-        A = M * x + A, M = M / d * m[i], A %= M;                //日常膜一膜（划掉）模一模，防止爆
-    }
-    A = (A % M + M) % M;
-    return A;
-}
+int map1[105][105];
 int main()
 {
-    int i, j;
-    while (scanf("%d", &n) != EOF)
+    int n, m;
+    scanf("%d %d", &n, &m);
+    if(n==1||m==1)
     {
-        for (i = 1; i <= n; i++)
-            scanf("%lld%lld", &m[i], &a[i]);
-        printf("%lld\n", work());
+        
     }
-    return 0;
+    if(n%2==1&&m%2==1)
+        return 1;
+    for (int i = 1; i <= n;i++)
+    {
+        for (int j = 1; j <= m;j++)
+        {
+            scanf("%d", map1[i][j]);
+        }
+    }
+    for (int i = 1; i <= n;i++)
+    {
+        for (int j = 1; j <= m;j++)
+        {
+            if(map1[i+1][j+1])
+        }
+    }
 }

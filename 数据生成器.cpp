@@ -20,21 +20,18 @@ int main(int argc, char *argv[])
         ss >> seed;
     }
     srand(seed);
-    freopen("1.txt", "w", stdout);
-    printf("1\n");
-    //int max1 = random(-10000, 10000);
-    //int min1 = random(-10000, 10000);
-    printf("1000 5 %d\n", random(-1000, 1000));
-    int n = 1000;
-    for (int i = 1; i <= n; i++)
+    freopen("3.in", "w", stdout);
+    int n = 10;
+    int m = 10;
+    for (int i = 1; i <= n;i++)
     {
-        int t = random(-1000, 1000);
-        while(!t)
+        for(int j=1;j<=m;j++)
         {
-            t = random(-1000, 1000);
+            printf("%d %d\n",i,j);
         }
-        printf("%d ", t);
     }
-    printf("\n");
-    printf("/*/*/\n");
+    for (int i = 1; i <= 10;i++)
+    {
+        printf("%d %d\n", random(1, 100), random(1, 100));
+    }
 }

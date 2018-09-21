@@ -108,21 +108,164 @@ int main()
         while (m--)
         {
             scanf("%d %d %d", &a, &b, &c);
-            printf("%lld %lld\n", getMax(a, b, 1, n, 1), getMin(a, b, 1, n, 1));
             update(a, b, c, 1, n, 1);
+            for (int i = 1; i <= n; i++)
+            {
+                printf("%2d ", getMin(i, i, 1, n, 1));
+            }
             w[a] += c;
             w[b + 1] -= c;
         }
         long long ans = 0;
-        for (int i = 1; i <= n;i++)
-        {
-            ans += w[i];
-            if(i==1)
-                printf("%lld", ans);
-            else
-                printf(" %lld", ans);
-        }
-        printf("\n");
+
     }
     return 0;
+}
+
+//问最小值
+
+//Q a b 询问(a,b)中最小值
+
+//C a b 将a点值改为b
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define maxn 200005
+
+
+
+int min(int a, int b)
+
+{
+
+	return a>b ? b : a;
+
+}
+
+int tree[4 * maxn];
+
+
+
+void pushup(int i)
+
+{
+
+	tree[i] = min(tree[i << 1], tree[i << 1 | 1]);
+
+}
+
+
+
+void build(int i, int l, int r)
+
+{
+
+	if (l == r)
+
+	{
+
+		scanf("%lld", &tree[i]);
+
+		return;
+
+	}
+
+	int mid = (l + r) / 2;
+
+	build(i << 1, l, mid);
+
+	build(i << 1 | 1, mid + 1, r);
+
+	pushup(i);
+
+}
+
+
+
+void update(int i, int l, int r, int x, int val)
+
+{
+
+	if (l == r)///l==x²»±ØÒª
+
+	{
+
+		tree[i] = val;
+
+		return;
+
+	}
+
+	int mid = (l + r) / 2;
+
+	if (x <= mid) update(i << 1, l, mid, x, val);
+
+	else update(i << 1 | 1, mid + 1, r, x, val);
+
+	pushup(i);
+
+}
+
+
+
+int query(int i, int l, int r, int x, int y)
+
+{
+
+	if (x <= l && r <= y)
+
+		return tree[i];
+
+	int minn = 9999999;
+
+	int mid = (l + r) / 2;
+
+	if (x <= mid) minn = min(minn, query(i << 1, l, mid, x, y));
+
+	if (y>mid) minn = min(minn, query(i << 1 | 1, mid + 1, r, x, y));
+
+	return minn;
+
+}
+
+
+
+int main()
+
+{
+
+	int n, m;
+
+	int b, c;
+
+	char a;
+
+	while (scanf("%d%d", &n, &m) != -1)
+
+	{
+
+		build(1, 1, n);
+
+		while (m--)
+
+		{
+
+			scanf(" %c%d%d", &a, &b, &c);
+
+			if (a == 'Q')
+
+				printf("%d\n", query(1, 1, n, b, c));
+
+			else
+
+				update(1, 1, n, b, c);
+
+		}
+
+	}
+
+	return 0;
+
 }
