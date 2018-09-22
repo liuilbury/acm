@@ -297,15 +297,15 @@ void play(int p, int x)
                 int flag = 0;
                 for (int j = 0; j <= 12; j++)
                 {
-                    if (mp[p][s0[s[j]]] == i)
+                    if (mp[p][i] == i)
                     {
-                        lei = s0[s[j]];
-                        t = mp[p][s0[s[j]]];
-                        for (int k = 1; k <= mp[p][s0[s[j]]]; k++)
+                        lei = s0[s[i]];
+                        t = mp[p][s0[s[i]]];
+                        for (int k = 1; k <= mp[p][s0[s[i]]]; k++)
                         {
-                            wp[p][++cnt[p]] = s0[s[j]];
+                            wp[p][++cnt[p]] = s0[s[i]];
                         }
-                        mp[p][s0[s[j]]] = 0;
+                        mp[p][s0[s[i]]] = 0;
                         flag = 1;
                         break;
                     }
@@ -469,41 +469,37 @@ void gamestart()
             }
             if (flag == 0)
             {
-                tt = i+1;
+                tt = i + 1;
             }
             if (tt != 0)
                 break;
         }
-        if (tt != 0)
+         for (int i = 0; i <= 3; i++)
         {
-            for (int i = 0; i <= 3; i++)
+            int q = 0;
+            if (i == tt - 1)
             {
-                int q = 0;
-                if (i == tt-1)
+                printf("WINNER\n");
+                continue;
+            }
+            for (int j = 0; j <= 12; j++)
+            {
+                for (int k = 1; k <= mp[i][j]; k++)
                 {
-                    printf("WINNER\n");
-                    continue;
-                }
-                for (int j = 0; j <= 12; j++)
-                {
-                    for (int k = 1; k <= mp[i][j]; k++)
+                    if (q == 0)
                     {
-                        if (q == 0)
-                        {
-                            cout << s[s0[s[j]]]<<' ';
-                            q = 1;
-                        }
-                        else
-                        {
-                            cout << s[s0[s[j]]]<<' ';
-                        }
+                        cout << s[s0[s[j]]];
+                        q = 1;
+                    }
+                    else
+                    {
+                        cout << ' ' << s[s0[s[j]]];
                     }
                 }
-                printf("\n");
             }
-            break;
+            printf("\n");
         }
-        //system("pause");
+       // system("pause");
     }
 }
 int main()

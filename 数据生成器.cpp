@@ -21,17 +21,8 @@ int main(int argc, char *argv[])
     }
     srand(seed);
     freopen("3.in", "w", stdout);
-    int n = 10;
-    int m = 10;
-    for (int i = 1; i <= n;i++)
+    for (int i = 1; i <= 100;i++)
     {
-        for(int j=1;j<=m;j++)
-        {
-            printf("%d %d\n",i,j);
-        }
-    }
-    for (int i = 1; i <= 10;i++)
-    {
-        printf("%d %d\n", random(1, 100), random(1, 100));
+        printf("%d ", i);
     }
 }
