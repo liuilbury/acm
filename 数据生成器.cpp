@@ -7,7 +7,7 @@ typedef long long ll;
 #define INF 0X3f3f3f3f
 const ll MAXN = 45000 + 7;
 const ll MOD = 1e9 + 7;
-int myrand(int mod) { return ((ll)rand() << 32 ^ (ll)rand() << 16 ^ rand()) % mod; }
+ll myrand(ll mod) { return ((ll)rand() << 32 ^ (ll)rand() << 16 ^ rand()) % mod; }
 #define random(a, b) ((a) + myrand((b) - (a) + 1)) //Integer[a,b]
 //-------------------------------------------//
 int main(int argc, char *argv[])
@@ -20,9 +20,14 @@ int main(int argc, char *argv[])
         ss >> seed;
     }
     srand(seed);
-    freopen("3.in", "w", stdout);
-    for (int i = 1; i <= 100;i++)
+    freopen("0.in", "w", stdout);
+    puts("1000000");
+    for (int i = 1; i <= 1000000; i++)
     {
-        printf("%d ", i);
+        if (i % 2 == 0)
+            printf("%lld ", (1 << 29));
+        else
+            printf("%lld ", (1 << 30));
     }
+    puts("\n");
 }

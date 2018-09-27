@@ -121,4 +121,11 @@
 "git.decorations.enabled": false,
 "C_Cpp.inactiveRegionOpacity": 0.55,
 "C_Cpp.workspaceParsingPriority": "high",
+"fileheader.tpl": "#include <bits/stdc++.h>\nusing namespace std;\ntypedef long long ll;\n#define fi first\n#define se second\n#define mem(a, b) memset(a, b, sizeof(a))\n#define INF 0X3f3f3f3f\nconst ll MAXN = 5000 + 7;\nconst ll MOD = 1e9 + 7;\n//-------------------------------------------//\nint main()\n{\n\n}\n",
+"fileheader.Author": "zb",
+"fileheader.LastModifiedBy": "zb",
+"editor.cursorStyle": "line",
+"editor.formatOnPaste": true,
+"editor.hover.delay": 100,
+"files.maxMemoryForLargeFilesMB": 8192,
 }
