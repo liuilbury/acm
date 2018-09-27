@@ -391,7 +391,7 @@ int main()
         int flag2 = 0;
         f1 = bign(a);
         f2 = bign(b);
-        f3 = BigNum(c);
+        f3 = bign(c);
         if (f3 - f1 > f1 - f2)
         {
             flag2 = 1;
