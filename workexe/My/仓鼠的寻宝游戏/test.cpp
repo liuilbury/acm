@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include<time.h>
 using namespace std;
 typedef long long ll;
 #define fi first
@@ -15,12 +16,15 @@ const ll MOD = 1e9 + 7;
 long long f, l;
 int main()
 {
+    #ifndef ONLINE_JUDGE
+    long _begin_time = clock();
+    #endif
     int T;
     int n;
     int li, fi;
     ll sum = 0;
-    //freopen("6.in", "r", stdin);
-    //freopen("6.out", "w", stdout);
+    freopen("test/6.in", "r", stdin);
+    freopen("test/6.out", "w", stdout);
     while (scanf("%d", &n) != EOF)
     {
         sum = 0;
@@ -55,4 +59,8 @@ int main()
         }
         printf("%lld\n", sum);
     }
+#ifndef ONLINE_JUDGE
+    long _end_time = clock();
+    printf("time = %ld ms\n", _end_time - _begin_time);
+#endif
 }

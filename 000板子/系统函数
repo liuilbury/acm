@@ -11,3 +11,14 @@ struct cmp2
 };
 priority_queue<int>q1;//从小到大
 priority_queue<int, vector<int>, cmp2>q2;//从大到小
+
+
+
+#ifndef ONLINE_JUDGE
+    long _begin_time = clock();
+#endif
+
+#ifndef ONLINE_JUDGE
+    long _end_time = clock();
+    printf("time = %ld ms\n", _end_time - _begin_time);
+#endif   

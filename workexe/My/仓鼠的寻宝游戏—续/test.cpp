@@ -12,9 +12,9 @@ typedef long long ll;
 const ll MAXN = 1000000 + 7;
 const ll MOD = 1e9 + 7;
 //-------------------------------------------//
-ll trie[32*MAXN][2];
+ll trie[32 * MAXN][2];
 ll a[MAXN];
-ll max1=0;
+ll max1 = 0;
 ll tot;
 int f;
 void insert(ll d)
@@ -38,13 +38,13 @@ void insert(ll d)
             break;
         }
     }
-    max1 = max(cnt,max1);
+    max1 = max(cnt, max1);
 }
 int main()
 {
     int n;
-    //freopen("test/6.in", "r", stdin);
-    //freopen("test/6.out", "w", stdout);
+    freopen("test/6.in", "r", stdin);
+    freopen("test/6.out", "w", stdout);
     scanf("%d", &n);
     ll sum = 0;
     for (int i = 1; i <= n; i++)
@@ -53,6 +53,6 @@ int main()
         insert(a[i]);
     }
     ll min1 = 2 * tot;
-    printf("%lld\n", min1-max1);
+    printf("%lld\n", min1 - max1);
     return 0;
 }
