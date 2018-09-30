@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
-#include<time.h>
+#include <time.h>
 using namespace std;
 typedef long long ll;
 #define fi first
@@ -16,9 +16,9 @@ const ll MOD = 1e9 + 7;
 long long f, l;
 int main()
 {
-    #ifndef ONLINE_JUDGE
+#ifndef ONLINE_JUDGE
     long _begin_time = clock();
-    #endif
+#endif
     int T;
     int n;
     int li, fi;

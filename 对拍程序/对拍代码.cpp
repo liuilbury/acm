@@ -1,20 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
 int main()
 {
-    int n, k;
-    scanf("%d%d", &n, &k);
-    vector<int> vec;
-    for (int i = 0; i < n; ++i)
-    {
-        int tmp;
-        scanf("%d", &tmp);
-        vec.push_back(tmp);
-    }
-    sort(vec.begin(), vec.end());
-    int pos = lower_bound(vec.begin(), vec.end(), k) - vec.begin();
-    int ans = pos == vec.size() ? -1 : vec[pos];
-    printf("%d\n", ans);
 
-    return 0;
 }

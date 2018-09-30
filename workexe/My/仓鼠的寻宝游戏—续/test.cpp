@@ -21,7 +21,7 @@ void insert(ll d)
 {
     int root = 0;
     ll cnt = 0;
-    for (int i = 32; i >= 0; i--)
+    for (int i = 30; i >= 0; i--)
     {
         int id = (d >> i) & 1;
         if (id == 1)
@@ -43,8 +43,8 @@ void insert(ll d)
 int main()
 {
     int n;
-    freopen("test/6.in", "r", stdin);
-    freopen("test/6.out", "w", stdout);
+    //freopen("test/6.in", "r", stdin);
+    //freopen("test/6.out", "w", stdout);
     scanf("%d", &n);
     ll sum = 0;
     for (int i = 1; i <= n; i++)
