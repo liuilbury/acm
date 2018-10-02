@@ -1,190 +1,154 @@
-#pragma comment(linker, "/STACK:1024000000,1024000000")
-#define mm(a) memset(a, 0, sizeof(a));
-#define max(x, y) (x) > (y) ? (x) : (y)
-#define min(x, y) (x) < (y) ? (x) : (y)
-#define Fopen                      \
-    freopen("in.txt", "r", stdin); \
-    freopen("out.txt", "w", stdout);
-#define rep(i, n) for (int i = 1; i <= (n); i++)
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-const int INF = 0x3f3f3f3f;
-const int MAXN = 1005;
-
-char s[20][20];
-int cal(char ch)
+struct node
 {
-    return ch - '0';
-}
-bool dp[82][10];
-int w[10];
-void max1(char a1, char a2, char a3)
-{
-    w[1] = cal(a1);
-    w[2] = cal(a2);
-    w[3] = cal(a3);
-}
-void max2(char a1, char a2)
-{
-    w[1] = cal(a1);
-    w[2] = cal(a2);
-}
-int zhongxin[10];
-int main()
-{
-    int t;
-    scanf("%d", &t);
-    while (t--)
+    short arr[3001];
+    short length;
+    short contribute;
+    node()
     {
-        mm(dp);
-        dp[0][0] = 1;
-        for (int i = 1; i <= 9; i++)
-            scanf("%s", s[i] + 1);
-
-        max1(s[1][4], s[4][1], s[4][12]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[1][6], s[4][9], s[4][10]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[3][4], s[4][3], s[4][4]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[3][6], s[4][6], s[4][7]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[6][1], s[6][12], s[9][4]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[6][3], s[6][4], s[7][4]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[6][6], s[6][7], s[7][6]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max1(s[9][6], s[6][9], s[6][10]);
-        for (int i = 4; i >= 1; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 3; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-
-        max2(s[6][11], s[9][5]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[3][5], s[4][5]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[2][4], s[4][2]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[2][6], s[4][8]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[5][1], s[5][12]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[6][2], s[8][4]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[8][6], s[6][8]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[5][3], s[5][4]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[5][6], s[5][7]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[5][9], s[5][10]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[4][11], s[1][5]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-        max2(s[6][5], s[7][5]);
-        for (int i = 8; i >= 5; i--)
-            for (int j = 81; j >= 0; j--)
-                for (int k = 1; k <= 2; k++)
-                    if (j >= w[k])
-                        dp[j][i] = max(dp[j - w[k]][i - 1], dp[j][i]);
-
-        zhongxin[1] = cal(s[2][5]);
-        zhongxin[2] = cal(s[5][5]);
-        zhongxin[3] = cal(s[8][5]);
-        zhongxin[4] = cal(s[5][2]);
-        zhongxin[5] = cal(s[5][8]);
-        zhongxin[6] = cal(s[5][11]);
-        for (int j = 81; j >= 0; j--)
-            for (int k = 1; k <= 6; k++)
-                if (j >= zhongxin[k])
-                    dp[j][9] = max(dp[j - w[k]][8], dp[j][9]);
-        int cas;
-        scanf("%d", &cas);
-        while (cas--)
+        memset(this->arr, -1, sizeof(this->arr));
+        length = 0;
+        contribute = 0;
+    }
+    void init()
+    {
+        memset(this->arr, -1, sizeof(this->arr));
+        length = 0;
+        contribute = 0;
+    }
+    friend bool operator<(const node &a, const node &b)
+    {
+        short maxlen = max(a.length, b.length);
+        for (register short i = 0; i < maxlen; i++)
+            if (a.arr[i] != b.arr[i])
+                return a.arr[i] < b.arr[i];
+        return 0;
+    }
+    friend bool operator==(const node &a, const node &b)
+    {
+        if (a.length != b.length)
+            return false;
+        for (register short i = 0; i < a.length; i++)
+            if (a.arr[i] != b.arr[i])
+                return false;
+        return true;
+    }
+    void input()
+    {
+        scanf("%hd", &this->length);
+        for (register short i = 0; i < this->length; i++)
+            scanf("%hd", &this->arr[i]);
+    }
+} s[3001];
+struct compare
+{
+    bool operator()(short x, short y)
+    {
+        return s[x] < s[y];
+    }
+};
+set<short, compare> se;
+static int sum = 0;
+void calculate(set<short>::iterator previous, set<short>::iterator it)
+{
+    short pre = *previous;
+    short i = *it;
+    for (register short j = 0; j < s[i].length; j++)
+    {
+        if (s[i].arr[j] != s[pre].arr[j])
         {
-            int x;
-            scanf("%d", &x);
-            if (dp[x][9])
-                puts("Yes");
-            else
-                puts("No");
+            s[i].contribute = s[i].length - j;
+            break;
         }
     }
-    return 0;
 }
+void eraser(short num)
+{
+    auto it3 = se.lower_bound(num);
+    sum -= s[num].contribute;
+    auto it4 = it3;
+    it4++;
+    if (it4 != se.end())
+    {
+        if (it3 == se.begin())
+        {
+            sum -= s[*it4].contribute;
+            s[*it4].contribute = s[*it4].length;
+            sum += s[*it4].contribute;
+        }
+        else
+        {
+            auto it5 = it3;
+            it5--;
+            sum -= s[*it4].contribute;
+            calculate(it5, it4);
+            sum += s[*it4].contribute;
+        }
+    }
+    se.erase(it3);
+}
+void insert(short num)
+{
+    auto it6 = se.insert(num).first;
+    if (it6 == se.begin())
+    {
+        sum += s[*it6].contribute = s[*it6].length;
+    }
+    else
+    {
+        auto it7 = it6;
+        it7--;
+        calculate(it7, it6);
+        sum += s[*it6].contribute;
+    }
+    auto it8 = it6;
+    it8++;
+    if (it8 != se.end())
+    {
+        sum -= s[*it8].contribute;
+        calculate(it6, it8);
+        sum += s[*it8].contribute;
+    }
+}
+int main()
+{
+    /*freopen("d:\\7.in","r",stdin);
+	freopen("d:\\7.out","w",stdout);*/
+    short n;
+    scanf("%hd", &n);
+    for (register short i = 0; i < n; i++)
+    {
+        s[i].input();
+        se.insert(i);
+    }
+    auto it1 = se.begin();
+    auto it2 = it1;
+    it2++;
+    sum = s[(*it1)].contribute = s[(*it1)].length;
+    while (it2 != se.end())
+    {
+        calculate(it1, it2);
+        sum += s[(*it2)].contribute;
+        it1 = it2++;
+    }
+    printf("%d\n", sum);
+    short q;
+    scanf("%hd", &q);
+    while (q--)
+    {
+        short num;
+        scanf("%hd", &num);
+        num--;
+        eraser(num);
+        s[num].init();
+        s[num].input();
+        insert(num);
+        printf("%d\n", sum);
+    }
+}
+/*
+15
+15
+19
+ */
