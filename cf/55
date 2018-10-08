@@ -1,0 +1,23 @@
+Splitting in Teams
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100005;
+#define INF 0X3f3f3f3f
+int n, m;
+int main()
+{
+    while(scanf("%d",&n)!=EOF)
+    {
+        int m[3]={0};
+        for (int i = 1; i <= n; i++)
+        {
+            int a;
+            scanf("%d", &a);
+            m[a]++;
+        }
+        int ans = 0;
+        ans += min(m[1], m[2]);
+        ans += (m[1] - ans) / 3;
+        printf("%d\n", ans);
+    }
+}

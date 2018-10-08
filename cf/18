@@ -1,0 +1,57 @@
+Shashlik Cooking
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int main()
+{
+    int a[1050];
+    int n, m;
+    scanf("%d%d", &n,&m);
+    int ans = (n / (2 * m + 1)) + !!(n % (2 * m + 1));
+    printf("%d\n", ans);
+    if(ans==1)
+    {
+        printf("%d\n", n / 2 + 1);
+    }
+    else
+    {
+        for (int i = 1; i <= m + 1;i++)
+        {
+            int first = i;
+            int r = i + m;
+            a[1] = i;
+            int cnt = 1;
+            int flag=0;
+            while(r<n)
+            {
+                a[++cnt] = r + 1 + m;
+                r += 2 * m + 1;
+                if(cnt==ans)
+                {
+                    if(r<n)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        flag = 1;
+                        break;
+                    }
+                }
+            }
+            if(flag==1)
+                break;
+        }
+        for (int i = 1; i <= ans;i++)
+        {
+            printf("%d ", a[i]);
+        }
+    }
+}

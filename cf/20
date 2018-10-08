@@ -1,0 +1,58 @@
+Non-Coprime Partition
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    if (n == 1 || n == 2)
+    {
+        printf("No\n");
+    }
+    else
+    {
+        printf("Yes\n");
+        if (n % 2 == 0)
+        {
+            printf("%d ", n / 2);
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 0)
+                    printf("%d ", i);
+            }
+            printf("\n");
+            printf("%d ", n / 2);
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 1)
+                    printf("%d ", i);
+            }
+            printf("\n");
+        }
+        else
+        {
+            printf("%d ", n / 2);
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 0)
+                    printf("%d ", i);
+            }
+            printf("\n");
+            printf("%d ", n / 2 + 1);
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 1)
+                    printf("%d ", i);
+            }
+            printf("\n");
+        }
+    }
+}

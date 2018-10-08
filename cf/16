@@ -1,0 +1,32 @@
+The Phone Number
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int t = sqrt(n);
+    int v[100050];
+    v[1] = 1;
+    int cnt = 0;
+    for (int i = 1; i <= t; i++)
+    {
+        cnt = 0;
+        for (int j = i; j <= n; j += t)
+        {
+            v[++cnt] = j;
+        }
+        for (int k = cnt; k >= 1; k--)
+        {
+            printf("%d ", v[k]);
+        }
+    }
+}

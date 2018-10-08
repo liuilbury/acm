@@ -1,0 +1,29 @@
+Continued Fractions
+#include <bits/stdc++.h>
+using namespace std;
+int n, m;
+long long a[100];
+int main()
+{
+    long long p, q;
+    while (scanf("%lld %lld", &p,&q) != EOF)
+    {
+        scanf("%d", &n);
+        for (int i = 1; i <= n;i++)
+        {
+            scanf("%lld", &a[i]);
+        }
+        int i = 1;
+        for (i = 1; i <= n;i++)
+        {
+            if(q==0||p/q<a[i])
+                break;
+            p = p - a[i] * q;
+            swap(q, p);
+        }
+        if(i==n+1&&q==0)
+            puts("YES");
+        else
+            puts("NO");
+    }
+}

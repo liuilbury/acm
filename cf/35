@@ -1,0 +1,56 @@
+Songs Compression
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+struct pop
+{
+    int a;
+    int b;
+    int t;
+} s[100050];
+bool cmp1(pop x,pop y)
+{
+    return x.a - x.b > y.a - y.b;
+}
+int main()
+{
+    int n, m;
+    scanf("%d %d", &n, &m);
+    ll ans = 0;
+    ll ans1 = 0;
+    for (int i = 1; i <= n;i++)
+    {
+        scanf("%d %d", &s[i].a, &s[i].b);
+        ans += s[i].b;
+        ans1 += s[i].a;
+        s[i].t = i;
+    }
+    if(ans>m)
+    {
+        printf("-1\n");
+    }
+    else if(ans1<=m)
+    {
+        printf("0\n");
+    }
+    else
+    {
+        sort(s + 1, s + 1 + n, cmp1);
+        for (int i = 1; i <= n;i++)
+        {
+            ans1 -= s[i].a - s[i].b;
+            if(ans1<=m)
+            {
+                printf("%d\n", i);
+                break;
+            }
+        }
+    }
+}

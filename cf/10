@@ -1,0 +1,73 @@
+Relatively Prime Graph
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+const int INF = 0x3f3f3f3f;
+using namespace std;
+int n, m, p;
+int gcd(int x, int y) //最大公约数
+{
+    while (y != 0)
+    {
+        int t = y;
+        y = x % y;
+        x = t;
+    }
+    return x;
+}
+struct pop
+{
+    int s;
+    int t;
+} v[11111111];
+int main()
+{
+    while (scanf("%d %d", &n, &m) != EOF)
+    {
+        if (m < n - 1)
+        {
+            printf("Impossible\n");
+        }
+        else
+        {
+            int cnt = 0;
+            int flag = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = i + 1; j <= n; j++)
+                {
+                    if (gcd(i, j) == 1)
+                    {
+                        v[++cnt].s = i;
+                        v[cnt].t = j;
+                        if (cnt == m)
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                }
+                if(flag==1)
+                    break;
+            }
+            if (flag == 0)
+            {
+                printf("Impossible\n");
+            }
+            else
+            {
+                printf("Possible\n");
+                for (int i = 1; i <= m; i++)
+                {
+                    printf("%d %d\n", v[i].s, v[i].t);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+The Rank
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+long long n, m;
+struct pop
+{
+    int a;
+    int b;
+    int c;
+    int d;
+    int sum;
+    int t;
+} s[1050];
+bool cmp1(pop x,pop y)
+{
+    if(x.sum==y.sum)
+        return x.t < y.t;
+    return x.sum > y.sum;
+}
+int main()
+{
+    scanf("%d",&n);
+    for (int i = 1; i <= n;i++)
+    {
+        scanf("%d %d %d %d", &s[i].a, &s[i].b, &s[i].c, &s[i].d);
+        s[i].sum = s[i].a + s[i].b + s[i].c + s[i].d;
+        s[i].t = i;
+    }
+    sort(s + 1, s + 1 + n, cmp1);
+    for (int i = 1; i <= n;i++)
+    {
+        if(s[i].t==1)
+        {
+            printf("%d\n", i);
+            break;
+        }
+    }
+}

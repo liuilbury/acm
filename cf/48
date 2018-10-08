@@ -1,0 +1,77 @@
+Elections
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 3050 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+struct pop
+{
+    ll a;
+    ll v;
+} s[MAXN], w[MAXN];
+bool cmp1(pop x, pop y)
+{
+    return x.v < y.v;
+}
+int main()
+{
+    int n, h, k;
+    map<int, int> m;
+    scanf("%d %d", &n, &m);
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%I64d %I64d", &s[i].a, &s[i].v);
+        //ans = max(m[s[i].a], ans);
+    }
+    sort(s + 1, s + 1 + n, cmp1);
+    ll ans = 3000000000000;
+    for (int i = 0; i <= n; i++)
+    {
+        ll sum = 0;
+        m.clear();
+        for (int j = 1; j <= n; j++)
+        {
+            w[j].a = s[j].a;
+            w[j].v = s[j].v;
+            m[w[j].a]++;
+        }
+        for (int j = 1; j <= n;j++)
+        {
+            if(w[j].a==1)
+                continue;
+            if(m[w[j].a]>i)
+            {
+                sum += w[j].v;
+                m[w[j].a]--;
+                m[1]++;
+                w[j].a = 1;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        for (int j = 1; j <= n;j++)
+        {
+            if(m[1]>=i+1)
+            {
+                break;
+            }
+            if(w[j].a!=1)
+            {
+                w[j].a = 1;
+                sum += w[j].v;
+                m[1]++;
+            }
+        }
+        if(m[1]>=i+1)
+        ans = min(sum, ans);
+    }
+    printf("%I64d\n", ans);
+    //system("pause");
+}

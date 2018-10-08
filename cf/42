@@ -1,0 +1,53 @@
+Text Document Analysis
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 0X3f3f3f3f
+int sum;
+int n, m;
+char map1[50][50];
+int main()
+{
+    int k;
+    while(scanf("%d\n",&n)!=EOF)
+    {
+        char a[500];
+        int cnt = 0;
+        int ans = 0;
+        int flag = 0;
+        int max1 = 0;
+        for (int i = 1; i <= n;i++)
+        {
+            int c;
+            scanf("%c", &a[i]);
+            if(a[i]=='_'&&flag==1)
+            {
+                if(a[i-1]!='_'&&a[i-1]!='(')
+                cnt++;
+            }
+            else if(a[i]=='(')
+            {
+                flag = 1;
+                max1 = max(ans, max1);
+                ans = 0;
+            }
+            else if(a[i]==')')
+            {
+                ans = 0;
+                flag = 0;
+                if(a[i-1]!='_'&&a[i-1]!='(')
+                cnt++;
+            }
+            else if(a[i]=='_')
+            {
+                max1 = max(ans, max1);
+                ans = 0;
+            }
+            else if(flag==0)
+            {
+                ans++;
+            }
+        }
+        max1 = max(ans, max1);
+        printf("%d %d\n", max1, cnt);
+    }
+}

@@ -1,0 +1,71 @@
+Walking Between Houses
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int main()
+{
+    ll n, m, k;
+    scanf("%lld %lld %lld", &n, &m, &k);
+    ll ans = k;
+    if ((n - 1) * m < k || m > k)
+    {
+        printf("NO\n");
+    }
+    else
+    {
+        printf("YES\n");
+        int flag = 0;
+        while (ans - (n - 1) >= m)
+        {
+            if (flag == 1)
+            {
+                flag = 0;
+                printf("1 ");
+            }
+            else
+            {
+                flag = 1;
+                printf("%d ", n);
+            }
+            ans -= n - 1;
+            m--;
+        }
+        ll li;
+        if (flag == 1)
+            li = n;
+        else
+            li = 1;
+        if (li == 1)
+        {
+            printf("%lld ", li + ans - (m - 1));
+            li += ans - (m - 1);
+        }
+        else
+        {
+            printf("%lld ", li - (ans - (m - 1)));
+            li -= ans - (m - 1);
+        }
+        for (int i = 1; i <= (m - 1); i++)
+        {
+            if (i % 2 == 1)
+            {
+                if(li==1)
+                    printf("2 ");
+                else
+                {
+                    printf("%lld ", li - 1);
+                }
+            }
+            else
+                printf("%lld ", li);
+        } //system("pasue");
+    }
+}
+//9 3 17

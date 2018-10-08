@@ -1,0 +1,29 @@
+Kolya and Tanya
+#include <bits/stdc++.h>
+using namespace std;
+#define MAXN 160000
+long long quickpow (long long a,long long b,long long c)
+{
+    long long ans=1;
+    while (b!=0)
+    {
+        if(b%2==1)
+        {
+            ans=(ans*a)%c;
+        }
+        a=(a*a)%c;
+        b=b/2;
+    }
+    return ans%c;
+}
+int main()
+{
+    long long  n, m;
+    while (scanf("%lld", &n) != EOF)
+    {
+        long long t = quickpow(27, n, 1000000007);
+        long long w = quickpow(7, n, 1000000007);
+        printf("%lld\n", ((t - w + 1000000007) % (1000000007)));
+    }
+    return 0;
+}

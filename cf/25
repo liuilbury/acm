@@ -1,0 +1,42 @@
+Palindrome Pairs
+#pragma comment(linker, "/STACK:1024000000,1024000000")
+#define mm(a) memset(a,0,sizeof(a));
+#define max(x,y) (x)>(y)?(x):(y)
+#define min(x,y) (x)<(y)?(x):(y)
+#define fi first
+#define se second
+#define Fopen freopen("in.txt","r",stdin); freopen("out.txt","w",stdout);
+#define rep(i,n) for(int i=1;i<=(n);i++)
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef pair<int, int> PII;
+const int INF = 0x3f3f3f3f;
+const ll LLINF = 0x3f3f3f3f3f3f3f3f;
+const int MAXN = (int)2e5+5;
+
+int n,sta;
+ll ans=0;
+char s[2000005];
+map<int,int>mp;
+int cal(int pos) {
+    return (1<<pos);
+}
+int main() {
+    scanf("%d",&n);
+    rep(i,n) {
+        scanf("%s",s);
+        sta=0;
+        for(int j=0; s[j]; j++) {
+            sta^=cal(s[j]-'a');
+        }
+        ans+=mp[sta];
+        mp[sta]++;
+        for(int j=0;j<26;j++)
+        {
+            ans+=mp[sta^(1<<j)];
+        }
+    }
+    printf("%lld\n",ans);
+    return 0;
+}

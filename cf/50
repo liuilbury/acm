@@ -1,0 +1,94 @@
+Test Case Tweaking
+#include <bits/stdc++.h>
+using namespace std;
+long long s, t, n, m, k, d[200 + 10][1100];
+const int INF = INT_MAX / 2 - 10;
+typedef pair<long long, long long> pii;
+vector<pii> G[2000 + 10];
+bool visit[200 + 10][1100];
+struct Node
+{
+    long long id;
+    long long level;
+    long long dis;
+    Node(long long id, long long level, long long dis) : id(id), level(level), dis(dis)
+    {
+    }
+    bool operator<(const Node &X) const
+    {
+        return dis > X.dis;
+    }
+};
+priority_queue<Node> pq;
+int main(void)
+{
+    freopen("G.in", "r", stdin);
+    long long a, b, c;
+    long long p;
+    while (scanf("%lld %lld %lld", &n, &m, &p) != EOF)
+    {
+        if (n == 0 && m == 0 && p == 0)
+            break;
+        s = 0;
+        t = n - 1;
+        for (int i = 0; i < n; i++)
+            G[i].clear();
+        for (int i = 0; i < m; i++)
+        {
+            scanf("%lld %lld %lld", &a, &b, &c);
+            G[a - 1].push_back(make_pair(b - 1, c));
+            //G[b].push_back(make_pair(a,c));
+        }
+        k = m;
+        memset(visit, 0, sizeof(visit));
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j <= k; j++)
+                d[i][j] = 100000000000;
+        // visit[s][0]=true;
+        d[s][0] = 0; //start from s,the zero level
+        pq.push(Node(s, 0, 0));
+        while (!pq.empty())
+        {
+            Node X = pq.top();
+            pq.pop();
+            long long x = X.id;
+            long long lv = X.level;
+            if (visit[x][lv] == true)
+                continue;
+            else
+            {
+                visit[x][lv] = true;
+                vector<pii>::iterator it;
+                for (it = G[x].begin(); it != G[x].end(); it++)
+                {
+                    long long y = (*it).first;
+                    long long u = (*it).second;
+                    //the same level
+                    if (u + d[x][lv] < d[y][lv])
+                    {
+                        d[y][lv] = u + d[x][lv];
+                        pq.push(Node(y, lv, d[y][lv]));
+                    }
+                    //the +1 level
+                    if (lv < k)
+                        if (d[x][lv] < d[y][lv + 1])
+                        {
+                            d[y][lv + 1] = d[x][lv];
+                            pq.push(Node(y, lv + 1, d[y][lv + 1]));
+                        }
+                }
+            }
+        }
+        long long ans = d[t][0];
+        for (int i = 0; i <= k; i++)
+        {
+            //printf("%lld\n", d[t][i]);
+            if (d[t][i] <= p)
+            {
+                printf("%d\n", i);
+                break;
+            }
+        }
+    }
+    return 0;
+}

@@ -1,0 +1,42 @@
+New Building for SIS
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 50 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int a[MAXN];
+int b[MAXN];
+int c[MAXN];
+int n;
+int ans = 0;
+int main()
+{
+    int n, h, a, b, k;
+    scanf("%d %d %d %d %d", &n, &h, &a, &b, &k);
+    int x_1, x_2, h_1, h_2;
+    for (int i = 1; i <= k;i++)
+    {
+        scanf("%d %d %d %d",&x_1,&h_1,&x_2,&h_2);
+        if (x_1 == x_2)
+        {
+            printf("%d\n", abs(h_1 - h_2));
+        }
+        else if (h_1 <= b && h_1 >= a)
+        {
+            printf("%d\n", abs(x_1 - x_2) + abs(h_1 - h_2));
+        }
+        else if (h_1 < a)
+        {
+            printf("%d\n", abs(a - h_1) + abs(x_1 - x_2) + abs(h_2 - a));
+        }
+        else if (h_1 > b)
+        {
+            printf("%d\n", abs(h_1 - b) + abs(x_1 - x_2) + abs(h_2 - b));
+        }
+    }
+}
