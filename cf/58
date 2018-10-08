@@ -1,0 +1,30 @@
+Olesya and Rodion
+#include <bits/stdc++.h>
+using namespace std;
+#define MAXN 160000
+int main()
+{
+    int n, m;
+    while (scanf("%d %d", &n,&m) != EOF)
+    {
+        if(n==1&&m==10)
+            printf("-1\n");
+        else if(m!=10)
+        {
+            for (int i = 1; i <= n;i++)
+            {
+                printf("%d", m);
+            }
+            printf("\n");
+        }
+        else
+        {
+            for (int i = 1; i <= n - 1;i++)
+            {
+                printf("1");
+            }
+            printf("0\n");
+        }
+    }
+    return 0;
+}

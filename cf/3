@@ -1,0 +1,52 @@
+Median on Segments (Permutations Edition)
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100005;
+#define INF 0X3f3f3f3f
+int n, m;
+int a[200050], b[50];
+int main()
+{
+    int k;
+    map<int, int> m;
+    while(scanf("%d %d",&n,&k)!=EOF)
+    {
+        int sum = 0;
+        long long ans = 0;
+        int sx;
+        for (int i = 1; i <= n;i++)
+        {
+            scanf("%d", &a[i]);
+            if(a[i]==k)
+            {
+                sx = i;
+            }
+            if(a[i]<=k)
+            {
+                a[i] = -1;
+            }
+            else
+                a[i] = 1;
+        }
+        for (int i = sx-1; i >=1;i--)
+        {
+            sum += a[i];
+            m[sum] ++;
+            if(sum==0||sum==1)
+            {
+                ans++;
+            }
+        }
+        int sum1 = 0;
+        for (int i = sx+1; i <= n;i++)
+        {
+            sum1 += a[i];
+            if(sum1==1||sum1==0)
+            {
+                ans++;
+            }
+            ans += m[-sum1] + m[1 - sum1];
+        }
+        printf("%lld\n", ans+1);
+    }
+}

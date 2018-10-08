@@ -1,0 +1,98 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n, m;
+    char a[100500], b[100500], c[100500];
+    while (scanf("%d %d", &n, &m) != EOF)
+    {
+        memset(c, '0', sizeof(c));
+        scanf("%s", a);
+        scanf("%s", b);
+        int cnt = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] == b[i])
+            {
+                c[i] = a[i];
+                cnt++;
+            }
+        }
+        if (n - cnt >= m)
+        {
+            if (cnt+(n-cnt)/2<n-m)
+                printf("-1\n");
+            else
+            {
+                int cnt1 = n - cnt - m;
+                int cnt2 = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    if (a[i] != b[i] && cnt2 < cnt1 * 2)
+                    {
+                        if (cnt2 < cnt1)
+                        {
+                            c[i] = a[i];
+                            cnt2++;
+                        }
+                        else
+                        {
+                            c[i] = b[i];
+                            cnt2++;
+                        }
+                    }
+                    if (c[i] != '0')
+                        printf("%c", c[i]);
+                    else
+                    {
+                        for (int j = 'a'; j <= 'z'; j++)
+                        {
+                            if (a[i] != j && b[i] != j)
+                            {
+                                printf("%c", j);
+                                break;
+                            }
+                        }
+                    }
+                }
+                printf("\n");
+            }
+        }
+        else
+        {
+            int cnt2 = (n - cnt - m);
+            for (int i = 0; i < n; i++)
+            {
+                if (a[i] == b[i])
+                {
+                    if(cnt2<0)
+                    {
+                    for (int j = 'a'; j <= 'z'; j++)
+                    {
+                        if (a[i] != j && b[i] != j)
+                        {
+                            printf("%c", j);
+                            cnt2++;
+                            break;
+                        }
+                    }
+                    }
+                    else
+                        printf("%c", c[i]);
+                }
+                else
+                {
+                    for (int j = 'a'; j <= 'z'; j++)
+                    {
+                        if (a[i] != j && b[i] != j)
+                        {
+                            printf("%c", j);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}

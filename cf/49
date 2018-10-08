@@ -1,0 +1,75 @@
+Find the Multiples 
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+ll a[100500];
+map<int, int> mp;
+int b[100500];
+int main()
+{
+    freopen("F.in", "r", stdin);
+    int N, S, W, Q;
+    while (scanf("%d %d %d %d", &N, &S, &W, &Q) != EOF && N && S && W && Q)
+    {
+        mp.clear();
+        int g = S;
+        for (int i = 1; i <= N; i++)
+        {
+            a[i] = (g / 7) % 10;
+            if (g % 2 == 0)
+            {
+                g = (g / 2);
+            }
+            else
+            {
+                g = (g / 2) ^ W;
+            }
+        }
+        ll ans = 0;
+        ll cnt = 1;
+        int r;
+        int gold=0;
+        ll sum = 0;
+        if (Q == 2 || Q == 5)
+        {
+            for (int i = 1; i <= N; i++)
+            {
+                if (a[i] != 0)
+                    gold++;
+                if (a[i] % Q == 0)
+                {
+                    ans += gold;
+                }
+            }
+            printf("%lld\n", ans);
+        }
+        else
+        {
+            for (int i = N; i >= 1; i--)
+            {
+                sum = (sum + a[i] * cnt) % Q;
+                cnt *= 10;
+                cnt %= Q;
+                if (a[i] == 0)
+                {
+                    mp[sum]++;
+                    continue;
+                }
+                ans += mp[sum];
+                mp[sum]++;
+                if (sum == 0)
+                    ans++;
+                //printf("%lld\n", ans);
+                //system("pause");
+            }
+            printf("%lld\n", ans);
+        }
+    }
+}

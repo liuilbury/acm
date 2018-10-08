@@ -1,0 +1,78 @@
+Mouse Hunt
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int pre[300500];
+int find(int x)
+{
+    if (pre[x] != x)
+        return pre[x] = find(pre[x]);
+    else
+        return x;
+}
+void join(int x, int y)
+{
+    int fx = find(x), fy = find(y);
+    if (fx != fy)
+    {
+        pre[fx] = fy;
+    }
+    return;
+}
+ll a[300500];
+ll v[300500];
+ll solve(int i)
+{
+    ll check = a[i];
+    ll min1 = v[i];
+    while (1)
+    {
+        if (i == check)
+        {
+            break;
+        }
+        min1 = min(v[check], min1);
+        check = a[check];
+    }
+    return min1;
+}
+int main()
+{
+    int n;
+    int T;
+    //freopen("1.txt", "r", stdin);
+    //freopen("2.txt", "w", stdout);
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%I64d", &v[i]);
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        pre[i] = i;
+    }
+    ll ans = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%lld", &a[i]);
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (find(i) == find(a[i]))
+        {
+            ans += solve(i);
+        }
+        else
+        {
+            join(i, a[i]);
+        }
+    }
+    printf("%I64d\n", ans);
+}

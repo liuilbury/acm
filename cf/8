@@ -1,0 +1,47 @@
+Minimum Ternary String
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+const int INF = 0x3f3f3f3f;
+using namespace std;
+char a[100500], b[5000];
+int n, m, p;
+int main()
+{
+    while (scanf("%s", a) != EOF)
+    {
+        int l = strlen(a);
+        int zero = 0, one = 0, two = 0;
+        int flag = 0;
+        for (int i = 0; i < l; i++)
+        {
+            if (a[i] == '1')
+                one++;
+        }
+        for (int i = 0; i < l; i++)
+        {
+            if (a[i] == '0')
+            {
+                printf("0");
+            }
+            if (a[i] == '2')
+            {
+                for (int i = 1; i <= one; i++)
+                {
+                    printf("1");
+                }
+                printf("2");
+                one = 0;
+            }
+        }
+        for (int i = 1; i <= one; i++)
+            printf("1");
+        printf("\n");
+    }
+}

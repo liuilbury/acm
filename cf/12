@@ -1,0 +1,71 @@
+Strange Addition
+#include <bits/stdc++.h>
+using namespace std;
+int n, m;
+int a[500];
+int main()
+{
+    while (scanf("%d", &n) != EOF)
+    {
+        int f[10] = {0};
+        int cnt = 0;
+        int b[50];
+        for (int i = 1; i <= n;i++)
+        {
+            scanf("%d", &a[i]);
+        }
+        for (int i = 1; i <= n;i++)
+        {
+            if(a[i]==0&&f[1]==0)
+            {
+                f[1] = i;
+            }
+            else if(f[2]==0&&(a[i]==10||a[i]==20||a[i]==30||a[i]==40||a[i]==50||a[i]==60||a[i]==70||a[i]==80||a[i]==90))
+            {
+                f[2] = i;
+            }
+            else if(f[3]==0&&a[i]==100)
+            {
+                f[3] = i;
+            }
+            else if(f[4]==0&&a[i]<10&&a[i]>0)
+            {
+                f[4] = i;
+            }
+            else if(f[5]==0&&a[i]>10&&a[i]<100)
+            {
+                f[5] = i;
+            }
+        }
+        if(f[1]!=0)
+        {
+            cnt++;
+            b[cnt] = a[f[1]];
+        }
+        if(f[2]!=0)
+        {
+            cnt++;
+            b[cnt] = a[f[2]];
+        }
+        if(f[3]!=0)
+        {
+            cnt ++ ;
+            b[cnt] = a[f[3]];
+        }
+        if(f[4]!=0)
+        {
+            cnt ++ ;
+            b[cnt] = a[f[4]];
+        }
+        if(f[5]!=0&&f[2]==0&&f[4]==0)
+        {
+            cnt++;
+            b[cnt] = a[f[5]];
+        }
+        printf("%d\n", cnt);
+        for (int i = 1; i <= cnt;i++)
+        {
+            printf("%d ", b[i]);
+        }
+    }
+}

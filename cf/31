@@ -1,0 +1,37 @@
+Three Parts of the Array
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 205000;
+long long a[MAXN], b[MAXN], ans;
+long long sum1[205000], sum2[205000];
+int n;
+int k;
+long long max1(long long x, long long y)
+{
+    return x > y ? x : y;
+}
+int main()
+{
+    while (scanf("%d", &n) != EOF)
+    {
+        memset(sum1, 0, sizeof(sum1));
+        memset(sum2, 0, sizeof(sum2));
+        for (int i = 1; i <= n; i++)
+        {
+            scanf("%lld", &a[i]);
+            sum1[i] += sum1[i - 1] + a[i];
+        }
+        long long max2 = 0;
+        for (int i = n; i >= 1; i--)
+        {
+            sum2[i] += sum2[i + 1] + a[i];
+            if (binary_search(sum1 + 1, sum1 + 1 + n, sum2[i]))
+            {
+                int t = lower_bound(sum1 + 1, sum1 + 1 + n, sum2[i]) - sum1;
+                if (t < i)
+                    max2 = max1(sum2[i], max2);
+            }
+        }
+        printf("%lld\n", max2);
+    }
+}

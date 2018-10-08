@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100005;
+#define INF 0X3f3f3f3f
+int n, m;
+int a[1050],b[1050];
+int main()
+{
+    while(scanf("%d",&n)!=EOF)
+    {
+        int cnt = 0;
+        for (int i = 1; i <= n;i++)
+        {
+            scanf("%d", &a[i]);
+            if(a[i]==1&&i!=1)
+            {
+                cnt++;
+                b[cnt] = a[i - 1];
+            }
+        }
+        cnt ++ ;
+        b[cnt] = a[n];
+        printf("%d\n", cnt);
+        for (int i = 1; i <= cnt;i++)
+        {
+            printf("%d ", b[i]);
+        }
+    }
+}

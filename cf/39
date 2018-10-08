@@ -1,0 +1,46 @@
+Numbers on the Chessboard
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int main()
+{
+    ll n;
+    ll T;
+    //freopen("1.txt", "r", stdin);
+    //freopen("2.txt", "w", stdout);
+    scanf("%lld %lld", &n, &T);
+    for (int i = 1; i <= T; i++)
+    {
+        ll x, y;
+        scanf("%lld %lld", &x, &y);
+        if (n % 2 == 0)
+        {
+            if ((x + y) % 2 == 0)
+            {
+                printf("%lld\n", ((x - 1) * n + y + 1) / 2);
+            }
+            else
+            {
+                printf("%lld\n", ((x - 1) * n + y + 1) / 2 + (n / 2) * (n / 2) + (n / 2) * (n / 2));
+            }
+        }
+        else
+        {
+            if ((x + y) % 2 == 0)
+            {
+                printf("%lld\n", ((x - 1) * n + y + 1) / 2);
+            }
+            else
+            {
+                printf("%lld\n", ((x - 1) * n + y + 1) / 2 + ((n + 1) / 2) * ((n + 1) / 2) + (n / 2) * (n / 2));
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+Gambling
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+long long a[100050], b[100050];
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	for (int i = 1; i <= n; i++)
+	{
+		scanf("%lld", &a[i]);
+	}
+	for (int i = 1; i <= n; i++)
+	{
+		scanf("%lld", &b[i]);
+	}
+	sort(a + 1, a + 1 + n);
+	sort(b + 1, b + 1 + n);
+	int r1 = n;
+	int r2 = n;
+	long long sum1 = 0;
+	long long sum2 = 0;
+	while (r1 > 0 || r2 > 0)
+	{
+		if (a[r1] > b[r2] && r1 > 0)
+		{
+			sum1 += a[r1];
+			r1--;
+		}
+		else
+		{
+			r2--;
+		}
+		if (b[r2] > a[r1] && r2 > 0)
+		{
+			sum2 += b[r2];
+			r2--;
+		}
+		else
+		{
+			r1--;
+		}
+	}
+	printf("%lld\n", sum1 - sum2);
+}

@@ -1,0 +1,58 @@
+Alex and broken contest 
+#include<map>
+#include<set>
+#include<queue>
+#include<cmath>
+#include<cstdio>
+#include<cstring>
+#include<cstdlib>
+#include<iostream>
+#include<algorithm>
+const int INF=0x3f3f3f3f;
+using namespace std;
+char  a[1000],n,m,p;
+int main()
+{
+	while(scanf("%s",a)!=EOF)
+	{
+		int l=strlen(a);
+        int flag = 0;
+        for (int i = 0; i < l;i++)
+        {
+            if(a[i]=='D'&&a[i+1]=='a'&&a[i+2]=='n'&&a[i+3]=='i'&&a[i+4]=='l')
+            {
+                //printf("YES\n");
+                flag ++;
+                i += 4;
+            }
+            if(a[i]=='O'&&a[i+1]=='l'&&a[i+2]=='y'&&a[i+3]=='a')
+            {
+                //printf("YES\n");
+                flag ++;
+                i += 3;
+            }
+            if(a[i]=='S'&&a[i+1]=='l'&&a[i+2]=='a'&&a[i+3]=='v'&&a[i+4]=='a')
+            {
+                //printf("YES\n");
+                i += 4;
+                flag ++;
+            }
+            if(a[i]=='A'&&a[i+1]=='n'&&a[i+2]=='n')
+            {
+                //printf("YES\n");
+                i += 2;
+                flag ++;
+            }
+            if(a[i]=='N'&&a[i+1]=='i'&&a[i+2]=='k'&&a[i+3]=='i'&&a[i+4]=='t'&&a[i+5]=='a')
+            {
+                //printf("YES\n");
+                i += 5;
+                flag ++;
+            }
+        }
+        if(flag!=1)
+            printf("NO\n");
+        else
+            printf("YES\n");
+    }
+}

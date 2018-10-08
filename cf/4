@@ -1,0 +1,125 @@
+Shovel Sale
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100005;
+#define INF 0X3f3f3f3f
+int n, m;
+int main()
+{
+    int b[50];
+    while (scanf("%d", &n) != EOF)
+    {
+        if (n == 1 )
+            printf("1\n");
+        else if(n==2)
+            printf("1\n");
+        else if(n==3)
+            printf("3\n");
+        else if(n==4)
+        {
+            printf("6\n");
+        }
+        else
+        {
+            if (n >= 5 && n < 50)
+            {
+                int ans = 1;
+                int t = (n - 5) / 10;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 10 + 1;
+                }
+                ans += (n - 5) % 10 * (t + 1);
+                printf("%d\n", ans - (n + 1) / 10);
+            }
+            if (n >= 50 && n < 500)
+            {
+                int ans = 1;
+                int t = (n - 50) / 100;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 100 + 1;
+                }
+                ans += (n - 50) % 100 * (t + 1);
+                printf("%d\n", ans - (n + 1) / 100);
+            }
+            if (n >= 500 && n < 5000)
+            {
+                int ans = 1;
+                int t = (n - 500) / 1000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 1000 + 1;
+                }
+                ans += (n - 500) % 1000 * (t + 1);
+                printf("%d\n", ans - (n + 1) / 1000);
+            }
+            if (n >= 5000 && n < 50000)
+            {
+                int ans = 1;
+                int t = (n - 5000) / 10000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 10000 + 1;
+                }
+                ans += (n - 5000) % 10000 * (t + 1);
+                printf("%d\n", ans - (n + 1) / 10000);
+            }
+            if (n >= 50000 && n < 500000)
+            {
+                int ans = 1;
+                int t = (n - 50000) / 100000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 100000 + 1;
+                }
+                ans += (n - 50000) % 100000 * (t + 1);
+                printf("%d\n", ans - (n + 1) / 100000);
+            }
+            if (n >= 500000 && n < 5000000)
+            {
+                long long ans = 1;
+                int t = (n - 500000) / 1000000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 1000000 + 1;
+                }
+                ans += (n - 500000) % 1000000 * (t + 1);
+                printf("%lld\n", ans - (n + 1) / 1000000);
+            }
+            if (n >= 5000000 && n < 50000000)
+            {
+                long long ans = 1;
+                int t = (n - 5000000) / 10000000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 10000000 + 1;
+                }
+                ans += (n - 5000000) % 10000000 * (t + 1);
+                printf("%lld\n", ans - (n + 1) / 10000000);
+            }
+            if (n >= 50000000 && n < 500000000)
+            {
+                long long  ans = 1;
+                int t = (n - 50000000) / 100000000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 100000000 + 1;
+                }
+                ans += (n - 50000000) % 100000000 * (t + 1);
+                printf("%lld\n", ans - (n + 1) / 100000000);
+            }
+            if (n >= 500000000 && n < 5000000000)
+            {
+                long long ans = 1;
+                int t = (n - 500000000) / 1000000000;
+                for (int i = 1; i <= t; i++)
+                {
+                    ans += i * 1000000000 + 1;
+                }
+                ans += (n - 500000000) % 1000000000 * (t + 1);
+                printf("%lld\n", ans - (n + 1) / 1000000000);
+            }
+        }
+    }
+}

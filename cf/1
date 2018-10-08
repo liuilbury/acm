@@ -1,0 +1,39 @@
+Summarize to the Power of Two
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100005;
+#define INF 0X3f3f3f3f
+int n, m;
+long long a[200050], b[50];
+map<long long, long long> s;
+int main()
+{
+    b[0] = 1;
+    for (int i = 1; i <= 32; i++)
+    {
+        b[i] = b[i - 1] * 2;
+    }
+    while (scanf("%d", &n) != EOF)
+    {
+        int cnt = n;
+        for (int i = 1; i <= n; i++)
+        {
+            scanf("%d", &a[i]);
+            s[a[i]] +=1;
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            s[a[i]]--;
+            for (int j = 0; j <= 32; j++)
+            {
+                if (s[b[j] - a[i]] > 0)
+                {
+                    cnt -= 1;
+                    break;
+                }
+            }
+            s[a[i]]++;
+        }
+        printf("%d\n", cnt);
+    }
+}

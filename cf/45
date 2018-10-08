@@ -1,0 +1,17 @@
+The New Year: Meeting Friends
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 0X3f3f3f3f
+int sum;
+int n, m;
+char map1[50][50];
+int main()
+{
+    int k;
+    while(scanf("%d %d %d",&n,&m,&k)!=EOF)
+    {
+        int max1 = max(max(n, m), k);
+        int min1 = min(min(n, m), k);
+        printf("%d\n", max1 - min1);
+    }
+}

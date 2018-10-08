@@ -1,0 +1,38 @@
+Intercity Travelling
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+const int INF = 0x3f3f3f3f;
+using namespace std;
+int n, m, p;
+long long a[1000100];
+long long b[1000100];
+int main()
+{
+    a[1] = 1;
+    long long pow1 = 1;
+    for (int i = 2; i <= 1000000; i++)
+    {
+        a[i] = (2 * a[i - 1] + pow1) % 998244353;
+        pow1 = (pow1 * 2)%998244353;
+    }
+    while (scanf("%d", &n) != EOF)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            scanf("%lld", &b[i]);
+        }
+        long long ans = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            ans += (b[i] * a[n - i + 1]) % 998244353;
+        }
+        printf("%lld\n", ans%998244353);
+    }
+}

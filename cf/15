@@ -1,0 +1,40 @@
+The Bits
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define fi first
+#define se second
+#define mem(a, b) memset(a, b, sizeof(a))
+#define INF 0X3f3f3f3f
+const ll MAXN = 5000 + 7;
+const ll MOD = 1e9 + 7;
+//-------------------------------------------//
+int main()
+{
+    int n;
+    char a[100500], b[100500];
+    scanf("%d", &n);
+    scanf("%s", a);
+    scanf("%s", b);
+    ll cnt0 = 0, cnt1 = 0, cnt2 = 0, cnt3 = 0;
+    for (int i = 0; i < n;i++)
+    {
+        if(a[i]=='0'&&b[i]=='0')
+        {
+            cnt0++;
+        }
+        else if(a[i]=='0'&&b[i]=='1')
+        {
+            cnt1++;
+        }
+        else if(a[i]=='1'&&b[i]=='0')
+        {
+            cnt2++;
+        }
+        else if(a[i]=='1'&&b[i]=='1')
+        {
+            cnt3++;
+        }
+    }
+    printf("%lld\n", cnt0*(cnt2+cnt3)+cnt1*cnt2);
+}

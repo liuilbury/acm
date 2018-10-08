@@ -1,0 +1,26 @@
+Ivan and Powers of Two
+#include <bits/stdc++.h>
+using namespace std;
+int n, m;
+int a;
+set<int> s;
+int main()
+{
+    while (scanf("%d", &n) != EOF)
+    {
+        s.clear();
+        int max1 = 0;
+        for(int i=1;i<=n;i++)
+        {
+            scanf("%d", &a);
+            while(s.count(a))
+            {
+                s.erase(a);
+                a++;
+            }
+            s.insert(a);
+            max1 = max(max1, a);
+        }
+        printf("%d\n", max1 - s.size() + 1);
+    }
+}

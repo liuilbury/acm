@@ -1,0 +1,76 @@
+Polycarp at the Radio
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 0X3f3f3f3f
+int sum;
+int n;
+int a[5000], b[5000];
+map<int, int> m;
+int main()
+{
+    int k;
+    while (scanf("%d %d", &n, &k) != EOF)
+    {
+        m.clear();
+        int ans = n / k;
+        int cnt = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            scanf("%d", &a[i]);
+            if (a[i] <= k)
+            {
+                m[a[i]]++;
+            }
+            else
+                m[0]++;
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            if (a[i] <= k)
+            {
+                if (m[a[i]] <= ans)
+                {
+                    b[i] = a[i];
+                }
+                else
+                {
+                    int tt = cnt;
+                    for (int j = 1; j <= k; j++)
+                    {
+                        if (m[j] < ans)
+                        {
+                            m[j]++;
+                            b[i] = j;
+                            cnt++;
+                            m[a[i]]--;
+                            break;
+                        }
+                    }
+                    if(tt==cnt)
+                        b[i] = a[i];
+                }
+            }
+            else
+            {
+                int tt = cnt;
+                for (int j = 1; j <= k; j++)
+                {
+                    if (m[j] < ans)
+                    {
+                        m[j]++;
+                        b[i] = j;
+                        cnt++;
+                        break;
+                    }
+                }
+                if(tt==cnt)
+                    b[i] = a[i];
+            }
+        }
+        printf("%d %d\n",ans ,cnt);
+        for (int i = 1; i <= n;i++)
+        {
+            printf("%d ", b[i]);
+        }
+    }
+}

@@ -1,0 +1,63 @@
+Nikita and string
+#include<map>
+#include<set>
+#include<queue>
+#include<cmath>
+#include<cstdio>
+#include<cstring>
+#include<cstdlib>
+#include<iostream>
+#include<algorithm>
+const int INF=0x3f3f3f3f;
+using namespace std;
+char  a[6000],n,m,p;
+int b1[6000], b2[6000];
+int main()
+{
+	while(scanf("%s",a)!=EOF)
+	{
+        memset(b1, 0, sizeof(b1));
+        memset(b2, 0, sizeof(b2));
+        int l=strlen(a);
+        int cnt = 0;
+        for (int i = 0; i < l;i++)
+        {
+            if(a[i]=='a')
+                cnt++;
+            else
+                b1[i] = cnt;
+        }
+        cnt = 0;
+        for (int i = l - 1; i >= 0;i--)
+        {
+            if(a[i]=='a')
+                cnt++;
+            else
+                b2[i] = cnt;
+        }
+        cnt = 0;
+        int max1 = -1;
+        for (int i = 0; i < l; i++)
+        {
+            cnt = 0;
+            for (int j = i; j < l;j++)
+            {
+                if(a[j]=='a')
+                {
+                    continue;
+                }
+                else
+                {
+                    cnt++;
+                    if(b1[i]+cnt+b2[j]>max1)
+                    {
+                        max1 = b1[i] + cnt + b2[j];
+                    }
+                }
+            }
+        }
+        if(max1==-1)
+            max1 = l;
+        printf("%d\n", max1);
+    }
+}

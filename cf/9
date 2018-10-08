@@ -1,0 +1,43 @@
+Annoying Present
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+const int INF = 0x3f3f3f3f;
+using namespace std;
+char a[100500], b[5000];
+long long n, m, p;
+int main()
+{
+    while (scanf("%lld %lld", &n, &m) != EOF)
+    {
+        long long ans = 0;
+        for (int i = 1; i <= m; i++)
+        {
+            long long x, d;
+            scanf("%lld %lld", &x, &d);
+            ans += n * x;
+            if (d >= 0)
+            {
+                ans += (n) * (n - 1) * 1.0 / 2 * d;
+            }
+            else if (d < 0)
+            {
+                if (n % 2 == 1)
+                {
+                    ans += (n / 2 + 1) * (n / 2) * d;
+                }
+                else
+                {
+                    ans += ((n / 2 + 1) * (n / 2) - n / 2) * d;
+                }
+            }
+        }
+        printf("%lf\n", ans*1.0/n);
+    }
+}

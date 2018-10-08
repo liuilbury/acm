@@ -1,3 +1,4 @@
+Meeting of Old Friends
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -10,5 +11,11 @@ const ll MOD = 1e9 + 7;
 //-------------------------------------------//
 int main()
 {
-    
+    ll l1, l2, r1, r2, k;
+    ll sum = 0;
+    scanf("%lld %lld %lld %lld %lld", &l1, &r1, &l2, &r2, &k);
+    sum = max(0ll, min(r2, r1) - max(l1, l2) + 1);
+    if(k<=min(r2,r1)&&k>=max(l1,l2))
+        sum--;
+    printf("%lld\n", max(sum,0ll));
 }
