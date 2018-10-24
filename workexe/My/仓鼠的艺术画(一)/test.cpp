@@ -12,19 +12,19 @@ int map1[105][105];
 int main()
 {
     int n, m, k;
-    //freopen("6.in", "r", stdin);
-    //freopen("6.out", "w", stdout);
+    //freopen("test/1.in", "r", stdin);
+    //freopen("test/1.out", "w", stdout);
     scanf("%d %d %d", &n, &m, &k);
     mem(map1, 0);
     for (int i = 1; i <= k; i++)
     {
         int x, y;
         scanf("%d %d", &x, &y);
-        map1[x][y] = i;
-        map1[x - 1][y] = i;
-        map1[x][y - 1] = i;
-        map1[x + 1][y] = i;
-        map1[x][y + 1] = i;
+        map1[x][y] += i;
+        map1[x - 1][y] += i;
+        map1[x][y - 1] += i;
+        map1[x + 1][y] += i;
+        map1[x][y + 1] += i;
     }
     for (int i = 1; i <= n; i++)
     {

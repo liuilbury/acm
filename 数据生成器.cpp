@@ -20,14 +20,15 @@ int main(int argc, char *argv[])
         ss >> seed;
     }
     srand(seed);
-    freopen("0.in", "w", stdout);
-    puts("1000000");
-    for (int i = 1; i <= 1000000; i++)
+    freopen("10.in", "w", stdout);
+    printf("1000\n");
+    for (int i = 1; i <= 990; i++)
     {
-        if (i % 2 == 0)
-            printf("%lld ", (1 << 29));
-        else
-            printf("%lld ", (1 << 30));
+        printf("%d ", i);
     }
-    puts("\n");
+    for (int i = 1; i <= 10; i++)
+    {
+        printf("989 ");
+    }
+    printf("\n");
 }

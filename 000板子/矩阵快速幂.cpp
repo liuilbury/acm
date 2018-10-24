@@ -53,6 +53,8 @@ Matrix qpow(Matrix a, int n)
     }
     return ans;
 }
+16000000000000000000
+18446744073709551616
 int main()
 {
     Matrix a;

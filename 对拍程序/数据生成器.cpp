@@ -13,15 +13,21 @@ int main(int argc, char *argv[])
         ss >> seed;
     }
     srand(seed);
-    int n = random(1, 1000);
-    int k = random(1, 1000);
-    assert(1 <= n && n <= 1000);
-    assert(1 <= n && k <= 1000);
-    printf("%d %d\n", n, k);
-    for (int i = 0; i < n; i++)
+    int n = random(1, 10000);
+    printf("%d\n", n);
+    // int k = random(1, 1000);
+    //assert(1 <= n && n <= 1000);
+    // assert(1 <= n && k <= 1000);
+    // printf("%d %d\n", n, k);
+    for (int j = 1; j <= n;j++)
     {
-        int tmp = random(1, 1000000000);
-        printf("%d%c", tmp, " \n"[i == n - 1]);
+        int key = random(0, 10000000);
+        printf("%d ", key);
+        for (int i = 0; i < 10; i++)
+        {
+            int tmp = random(0, 100000);
+            printf("%d%c", tmp, " \n"[i == n - 1]);
+        }
     }
     return 0;
 }

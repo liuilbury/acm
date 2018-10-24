@@ -1,21 +1,39 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-#define fi first
-#define se second
-#define mem(a, b) memset(a, b, sizeof(a))
-#define INF 0X3f3f3f3f
-const ll MAXN = 5000 + 7;
-const ll MOD = 1e9 + 7;
-//-------------------------------------------//
 int main()
 {
-    int T;
-    scanf("%d",&T);
-    while(T--)
+    int T, n, m;
+    char b[20] = {"AC"};
+    char c[20] = {"CE"};
+    char a[200];
+    scanf("%d", &T);
+    for (int i = 1; i <= T;i++)
     {
-        int n, m;
-        scanf("%d %d", &n, &m);
-        printf("%d\n", n * m / 2);
+        int sum=0,t=0;
+        scanf("%d",&n);
+        int flag = 0;
+        for (int j = 1; j <= n;j++)
+        {
+            scanf("%s", &a);
+            if(flag==0)
+            {
+            if(strcmp(a,b)==0)
+            {
+                flag = 1;
+                t = sum;
+            }
+            else if(strcmp(a,c)==0)
+            {
+                continue;
+            }
+            else
+                sum += 20;
+            }
+        }
+        if(flag==0)
+            printf("-1\n");
+        else
+            printf("%d\n", t);
     }
+        return 0;
 }

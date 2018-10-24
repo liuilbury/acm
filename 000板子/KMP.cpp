@@ -11,6 +11,8 @@ const int MAXN=200005;
 char a[MAXN],b[MAXN];
 int fail[MAXN],ans;
 bool success[MAXN];
+//用于找一个串有没有出现在另一个串中
+//fail[l]是循坏节的最长长度
 void getfail(char t[],int fail[])
 {
 	fail[0]=fail[1]=0;int l=strlen(t);
